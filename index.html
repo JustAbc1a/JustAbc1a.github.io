@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	机电校外人员通行码
+</title><link rel="stylesheet" href="./new_file.css" />
+    <script src="./jq.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if(r != null){
+                return decodeURIComponent(r[2]);
+        //这里为什么是从第三个字符解析呢？不知道这样理解对不对，因为路径后面的参数形式为参数名=参数值，而第一个字符为参数名，第二个为=，第三个就为参数值了。。。因为下面调用的时候得出的就是参数值
+            }
+            return null;//返回参数值
+        }
+        var XQ = "C";
+        var jkmzt = 1;
+        var SFZHM = "331081200003048010";
+        var yyjl = 1;
+        var XQS = "";
+        $(window).load(function () {
+            var mz = getUrlParam('mz');
+            var lxr = getUrlParam('lxr');
+            var dw = getUrlParam('dw');
+            document.getElementById("mz").innerText = mz;
+            document.getElementById("lxr").innerText = lxr;
+            document.getElementById("dw").innerText = dw;
+            if (XQ == "B") {
+                document.getElementById("xq").innerText = "校区：滨江校区";
+            } else {
+                document.getElementById("xq").innerText = "校区：海宁校区";
+                document.getElementById("sfkyjx").innerText = "您的嘉兴健康码为绿码，且在预约时间段内，可以进校";
+            }
+            if (yyjl == 0) {
+                $("[name='ycxx']").hide();
+                $(".max-sk-nz-ewm").attr("style", "margin-top:260px");
+                $("#viewConttainer1").attr("src", "../image/err.jpg");
+                document.getElementById("sfkyjx").innerText = "当前时间不在预约时间段内，暂不可进校";
+            } else {
+
+                if (jkmzt == 1) {          
+                    $("#viewConttainer1").attr("src", "./XWJXM.png");
+                } else {
+
+                    $("#viewConttainer1").attr("src", "../image/err.jpg");
+                    if (XQ == "B") {
+                        document.getElementById("sfkyjx").innerText = "您的杭州健康码不为绿码，暂不可进校";
+                    } else {
+                        document.getElementById("sfkyjx").innerText = "您的嘉兴健康码不为绿码，暂不可进校";
+                    }
+
+                }
+            }
+
+           
+            
+        });
+    </script>
+</head>
+<body>
+    <div class="max">
+        <span id="GUID" style="display: none"></span>
+        <span class="max-span">守护校园 &nbsp; &nbsp; &nbsp; &nbsp;人人有责</span>
+        <div class="max-sk"></div>
+        <div class="max-sk-nz">
+            <span class="max-sk-nz-zt" style="margin-top: 20px;" name="ycxx">姓名：<span id="mz">胡仙法</span></span>
+            <span class="max-sk-nz-zt" name="ycxx">被访部门：海宁校区综合办</span>
+            <span class="max-sk-nz-zt" name="ycxx">校内联系人：<span id="lxr"></span> </span>
+            <span class="max-sk-nz-zt" name="ycxx">来访单位：<span id="dw"></span></span>
+            <div class="max-sk-nz-ewm">
+                <div class="ewm">
+                    <img id="viewConttainer1" style="width: 100%; height: 100%" src=''>
+                </div>
+                <!-- 二维码 -->
+            </div>
+            <span class="max-sk-nz-zts" style="margin-top: -10px;"><a class="max-sk-nz-zts-aa" style="text-decoration: none;" href="">刷新</a></span>
+            <span class="max-sk-nz-ztz" style="margin-top: 10px; color:#f74b4b;" name="ycxx">访问时间：2022-03-27 10:19</span>
+            <span class="max-sk-nz-ztz" style="margin-top: 10px;color:#f74b4b;" name="ycxx">结束时间：2022-12-31 10:19</span>
+            <span class="max-sk-nz-ztz" style="margin-top: 10px;">通行日期：2022-09-12</span>
+            <span class="max-sk-nz-ztz" style="margin-top: 10px;" id="xq"></span>
+            <span class="max-sk-nz-ztz" style="margin-top: 10px;" id="sfkyjx">您的杭州健康码为绿码，且在预约时间段内，可以进校</span>
+            <div>
+                <span class="max-sk-nz-ztz" style="margin-top: 20px;"><a class="max-sk-nz-zts-aa" style="text-decoration: none;" href="/Pages/list_logon.aspx?ID=f3b135925ad24cc9b609085a46e53fb9&GH=331081200003048010">进出统计</a>&nbsp;|
+
+                    &nbsp;<a class="max-sk-nz-zts-aa" style="text-decoration: none;" href="/Pages/list_logon.aspx?ID=699d5b36d5fe49b081a10811a3f017b8&SFZH=331081200003048010">预约记录</a>
+                </span>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
