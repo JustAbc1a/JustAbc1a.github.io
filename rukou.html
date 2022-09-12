@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+	机电校外人员通行码
+</title><link rel="stylesheet" href="./new_file.css" />
+    <script src="./jq.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="max">
+        <div>名字<input id="mz" /></div>
+        <div>校内联系人<input id="lxr" /></div>
+        <div>来访单位<input id="dw" /></div>
+        <div><button onclick="yes()">确认</button></div>
+    </div>
+    <script>
+        function yes(){
+            var mz = document.getElementById("mz")
+            var lxr = document.getElementById("lxr")
+            var dw = document.getElementById("dw")
+            console.log(mz.value)
+            console.log(lxr.value)
+            console.log(dw.value)
+            window.location.replace('file:///Users/yad/Desktop/tools/index.html?mz='+mz.value+'&lxr='+lxr.value+'&dw='+dw.value)
+        }
+    </script>
+</body>
+</html>
